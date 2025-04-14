@@ -11,7 +11,9 @@
 ## 사용 기술
 
 - Next.js (15.3)
-- React.js (19.0)
+- React.js (18.3)
 - TypeScript
+- Zustand
 - TailwindCSS
+- Shadcn/ui
 - Supabase
