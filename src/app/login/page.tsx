@@ -1,3 +1,4 @@
+"use client";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -29,7 +30,13 @@ const Login = () => {
             placeholder="비밀번호를 입력하세요"
             required
           ></LabeledInput>
-          <Button type="submit" className="w-full">
+          <Button
+            type="submit"
+            className="w-full"
+            onClick={() => {
+              console.log("TODO: 로그인 API 호출");
+            }}
+          >
             로그인
           </Button>
         </form>
