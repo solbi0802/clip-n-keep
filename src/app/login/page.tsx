@@ -1,11 +1,11 @@
 "use client";
-import { AuthFormLayout } from "@/components/auth/AuthFormLayout";
+import { FormLayout } from "@/components/common/FormLayout";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import { Button } from "@/components/ui/button";
 
 const Login = () => {
   return (
-    <AuthFormLayout
+    <FormLayout
       title="로그인"
       footerText="아직 계정이 없으신가요?"
       footerLinkText="회원가입"
@@ -34,7 +34,7 @@ const Login = () => {
       >
         로그인
       </Button>
-    </AuthFormLayout>
+    </FormLayout>
   );
 };
 

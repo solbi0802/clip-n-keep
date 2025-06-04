@@ -1,11 +1,11 @@
 "use client";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import { Button } from "@/components/ui/button";
-import { AuthFormLayout } from "@/components/auth/AuthFormLayout";
+import { FormLayout } from "@/components/common/FormLayout";
 
 const Signup = () => {
   return (
-    <AuthFormLayout
+    <FormLayout
       title="회원가입"
       footerText="이미 계정이 있으신가요?"
       footerLinkText="로그인"
@@ -41,7 +41,7 @@ const Signup = () => {
       >
         등록
       </Button>
-    </AuthFormLayout>
+    </FormLayout>
   );
 };
 
