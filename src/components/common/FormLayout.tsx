@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface AuthFormLayoutProps {
+interface FormLayoutProps {
   title: string;
   children: React.ReactNode;
   footerText?: string;
@@ -8,21 +8,21 @@ interface AuthFormLayoutProps {
   footerLinkHref?: string;
 }
 
-export const AuthFormLayout = ({
+export const FormLayout = ({
   title,
   children,
   footerText,
   footerLinkText,
   footerLinkHref,
-}: AuthFormLayoutProps) => {
+}: FormLayoutProps) => {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen px-4">
       <section
         className="w-full max-w-sm space-y-6"
-        aria-labelledby="auth-title"
+        aria-labelledby="form-title"
       >
         <header>
-          <h2 id="auth-title" className="text-2xl font-semibold text-center">
+          <h2 id="form-title" className="text-2xl font-semibold text-center">
             {title}
           </h2>
         </header>
