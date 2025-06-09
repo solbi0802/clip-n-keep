@@ -23,9 +23,9 @@ export default function LinkPreview(metaData: MetaData) {
       ) : (
         <div className="border rounded p-4 mt-2 text-gray-500">
           <p>
-            미리보기 정보 불러오기에 실패했습니다.
+            썸네일 없음
             <br />
-            올바른 URL을 입력해주세요.
+            해당 URL은 미리보기 정보없이 저장됩니다.
           </p>
         </div>
       )}
