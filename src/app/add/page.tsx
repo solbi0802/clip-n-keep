@@ -1,9 +1,9 @@
 "use client";
 
+import { DebouncedButton } from "@/components/common/DebouncedButton";
 import { FormLayout } from "@/components/common/FormLayout";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import LinkPreview from "@/components/common/LinkPreview";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 interface MetaData {
@@ -18,6 +18,7 @@ const Add = () => {
   const [url, setUrl] = useState("");
   const [meta, setMeta] = useState<MetaData | null>(null);
   const [urlError, setUrlError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchMetadata = async () => {
     const res = await fetch(`/api/metadata?url=${encodeURIComponent(url)}`);
@@ -67,7 +68,7 @@ const Add = () => {
         error={urlError}
         required
       />
-      <Button
+      <DebouncedButton
         type="button"
         className="bg-black text-white px-4 py-2 rounded"
         aria-label="미리보기 가져오기"
@@ -76,7 +77,7 @@ const Add = () => {
         onClick={fetchMetadata}
       >
         미리보기 가져오기
-      </Button>
+      </DebouncedButton>
       {meta && (
         <LinkPreview
           title={meta?.title}
@@ -86,17 +87,20 @@ const Add = () => {
       )}
       <LabeledInput label={"메모"} id={"memo"} type="text"></LabeledInput>
       <LabeledInput label="태그" id="tag" type="tag" />
-      <Button
+      <DebouncedButton
         type="submit"
         className="w-full bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        disabled={!url || !!urlError}
+        disabled={!url || !!urlError || isLoading}
         aria-label="스크랩 추가"
         onClick={() => {
+          setIsLoading(true);
           console.log("TODO: 스크랩 추가 API 호출");
+          // setIsLoading(false);
         }}
+        loading={isLoading}
       >
         저장
-      </Button>
+      </DebouncedButton>
     </FormLayout>
   );
 };
