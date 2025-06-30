@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 interface FormLayoutProps {
@@ -27,7 +28,7 @@ export const FormLayout = ({
           </h2>
         </header>
 
-        <form className="space-y-4">{children}</form>
+        <div className="space-y-4">{children}</div>
         {footerText && footerLinkText && footerLinkHref && (
           <footer>
             <p className="text-sm text-center text-gray-500">

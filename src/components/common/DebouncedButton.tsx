@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import debounce from "lodash.debounce";
 import { useCallback, useMemo } from "react";
