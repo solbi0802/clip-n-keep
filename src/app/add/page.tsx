@@ -4,6 +4,7 @@ import { DebouncedButton } from "@/components/common/DebouncedButton";
 import { FormLayout } from "@/components/common/FormLayout";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import LinkPreview from "@/components/common/LinkPreview";
+import { urlRegex } from "@/utils/const";
 import { useState } from "react";
 
 interface MetaData {
@@ -32,9 +33,6 @@ const Add = () => {
 
     return data;
   };
-
-  // URL 정규식 — https://, http:// 또는 www. 허용 버전
-  const urlRegex = /^(https?:\/\/|www\.)[^\s/$.?#].[^\s]*$/;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
