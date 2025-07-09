@@ -24,7 +24,6 @@ const ShelfDetail = () => {
   }) => {
     setIsSubmitting(true);
     // ✅ TODO: update API 호출
-
     console.log("🛠️ Update Data:", { url, memo, tag, meta });
     setTimeout(() => setIsSubmitting(false), 1000);
   };

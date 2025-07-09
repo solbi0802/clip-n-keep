@@ -128,9 +128,8 @@ export const ScrapForm = ({
           className="w-full bg-blue-500 text-white hover:bg-blue-600 mt-4"
           disabled={!url || !!urlError || isSubmitting}
           loading={isSubmitting}
-          onClick={function (): void {
-            console.log("TODO: 스크랩 등록/수정 API 호출");
-            throw new Error("Function not implemented.");
+          onClick={() => {
+            onSubmit({ url, memo, tag, meta });
           }}
         >
           {mode === "create" ? "저장" : "수정"}
