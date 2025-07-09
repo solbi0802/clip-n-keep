@@ -2,12 +2,19 @@
 import { PageLayout } from "@/components/common/PageLayout";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const imageList = Array(32).fill(
-  "https://images.unsplash.com/photo-1747767763480-a5b4c7a82aef?fm=jpg&q=60&w=500"
-);
+const imageList = Array.from({ length: 32 }, (_, i) => ({
+  id: i + 1,
+  url: "https://images.unsplash.com/photo-1747767763480-a5b4c7a82aef?fm=jpg&q=60&w=500",
+}));
 
 const Shelf = () => {
+  const router = useRouter();
+
+  const handleItemClick = (id: number) => {
+    router.push(`/shelf/${id}`);
+  };
   return (
     <PageLayout title="내 서랍 보기">
       <div className="flex flex-row items-center justify-center gap-4">
@@ -19,14 +26,14 @@ const Shelf = () => {
         {imageList.map((image, index) => (
           <Image
             key={index}
-            src={image}
+            src={image.url}
             width={200}
             height={200}
             className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
             alt={`스크랩 이미지 ${index + 1}`}
             loading="lazy"
             quality={60}
-            onClick={() => alert(`TODO:이미지 ${index + 1} 상세보기로 이동`)}
+            onClick={() => handleItemClick(image.id)}
           />
         ))}
       </div>
