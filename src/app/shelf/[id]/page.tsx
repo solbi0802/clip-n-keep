@@ -1,4 +1,5 @@
 "use client";
+import { withAuth } from "@/components/hoc/withAuth";
 import { ScrapForm } from "@/components/scrap/ScrapForm";
 import { useState } from "react";
 
@@ -39,4 +40,4 @@ const ShelfDetail = () => {
   );
 };
 
-export default ShelfDetail;
+export default withAuth(ShelfDetail);

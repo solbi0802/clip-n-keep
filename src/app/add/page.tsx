@@ -1,4 +1,5 @@
 "use client";
+import { withAuth } from "@/components/hoc/withAuth";
 import { ScrapForm } from "@/components/scrap/ScrapForm";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -38,4 +39,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default withAuth(Add);
