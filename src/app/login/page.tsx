@@ -2,11 +2,13 @@
 import { FormLayout } from "@/components/common/FormLayout";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/store/authStore";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Login = () => {
+  const { setUser } = useAuthStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,15 +19,20 @@ const Login = () => {
     e.preventDefault();
     setError("");
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
+    if (data?.user) {
+      if (typeof data.user.email === "string") {
+        setUser({ ...data.user, email: data.user.email });
+        router.push("/shelf");
+      } else {
+        setError("이메일 정보가 올바르지 않습니다.");
+      }
+    } else if (error) {
       setError("이메일 또는 비밀번호가 올바르지 않습니다.");
-    } else {
-      router.push("/shelf");
     }
   };
 
