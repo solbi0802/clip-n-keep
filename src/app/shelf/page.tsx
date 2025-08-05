@@ -58,22 +58,27 @@ const Shelf = () => {
         {scraps.map((item) => (
           <div
             key={item.id}
-            className="w-48 h-48 bg-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer flex items-center justify-center"
             onClick={() => handleItemClick(item.id)}
+            className="flex flex-col items-center justify-center"
           >
-            {item?.imageUrl && (
-              <Image
-                key={item.id}
-                src={item.url}
-                width={200}
-                height={200}
-                className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-                alt={`스크랩 이미지 ${item.id}`}
-                loading="lazy"
-                quality={60}
-              />
+            {item.imageUrl ? (
+              <>
+                <Image
+                  src={item.imageUrl}
+                  width={200}
+                  height={200}
+                  className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  alt={`스크랩 이미지 ${item.id}`}
+                  loading="lazy"
+                  quality={60}
+                />
+                <p className="flex items-center justify-center">{item.memo}</p>
+              </>
+            ) : (
+              <div className="flex items-center justify-center h-48 w-48 bg-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                <p className="text-gray-500">{item.memo}</p>
+              </div>
             )}
-            <p>{item.memo}</p>
           </div>
         ))}
       </div>
