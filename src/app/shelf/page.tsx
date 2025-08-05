@@ -2,7 +2,7 @@
 import { PageLayout } from "@/components/common/PageLayout";
 import { withAuth } from "@/components/hoc/withAuth";
 import { Button } from "@/components/ui/button";
-// import Image from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -11,6 +11,7 @@ interface ScrapItem {
   url: string;
   memo?: string;
   tag?: string;
+  imageUrl?: string;
 }
 
 const Shelf = () => {
@@ -60,6 +61,18 @@ const Shelf = () => {
             className="w-48 h-48 bg-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer flex items-center justify-center"
             onClick={() => handleItemClick(item.id)}
           >
+            {item?.imageUrl && (
+              <Image
+                key={item.id}
+                src={item.url}
+                width={200}
+                height={200}
+                className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                alt={`스크랩 이미지 ${item.id}`}
+                loading="lazy"
+                quality={60}
+              />
+            )}
             <p>{item.memo}</p>
           </div>
         ))}
