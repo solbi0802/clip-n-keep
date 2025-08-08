@@ -1,12 +1,5 @@
 "use client";
-
-interface MetaData {
-  title: string;
-  image: string;
-  error?: string;
-  description?: string;
-  url?: string;
-}
+import { MetaData } from "@/app/types";
 
 export default function LinkPreview(metaData: MetaData) {
   const { title, image, error } = metaData;
