@@ -49,7 +49,11 @@ const Shelf = () => {
   return (
     <PageLayout title="내 서랍 보기">
       <div className="flex flex-row items-center justify-center gap-4">
-        <Button variant="default" className="max-w-xs">
+        <Button
+          variant="default"
+          className="max-w-xs"
+          onClick={() => router.push("/add")}
+        >
           +
         </Button>
       </div>
@@ -72,7 +76,6 @@ const Shelf = () => {
                   loading="lazy"
                   quality={60}
                 />
-                <p className="flex items-center justify-center">{item.memo}</p>
               </>
             ) : (
               <div className="flex items-center justify-center h-48 w-48 bg-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
