@@ -6,12 +6,7 @@ import { FormLayout } from "@/components/common/FormLayout";
 import { LabeledInput } from "@/components/common/LabeledInput";
 import LinkPreview from "@/components/common/LinkPreview";
 import { urlRegex } from "@/utils/const";
-
-interface MetaData {
-  title: string;
-  image: string;
-  error?: string;
-}
+import { MetaData } from "@/app/types";
 
 interface ScrapFormProps {
   mode: "create" | "edit";
