@@ -27,12 +27,19 @@ export async function GET() {
 }
 // 📌 POST: 스크랩 추가
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const { url, memo, tag, owner_id } = body;
+  const supabase = createRouteHandlerClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  const body = await req.json();
+  const { url, memo, imageUrl } = body;
   const { data, error } = await supabase
     .from("shelf")
-    .insert([{ url, memo, tag, owner_id }]);
+    .insert([{ url, memo, owner_id: session.user.id, imageUrl }]);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -44,11 +51,11 @@ export async function POST(req: NextRequest) {
 // 📌 PATCH: 특정 스크랩 수정
 export async function PATCH(req: NextRequest) {
   const body = await req.json();
-  const { id, memo, tag } = body;
+  const { id, memo, tag, imageUrl } = body;
 
   const { error } = await supabase
     .from("shelf")
-    .update({ memo, tag })
+    .update({ memo, tag, imageUrl })
     .eq("id", id);
 
   if (error) {
